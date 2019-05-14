@@ -2,7 +2,7 @@
 #define __MONTY__H__
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
