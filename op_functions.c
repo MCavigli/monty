@@ -8,7 +8,7 @@
  * Return: nothing
  */
 
-void op_push(stack_t **stack, unsigned int line_number)
+stack_t *op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 	(void)line_number;
@@ -21,23 +21,17 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{
 		return (NULL);
 	}
-	new_node->n = n;
+	new_node->n = node_data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	/* NULL <- new_node -> NULL */
 
 	if (*stack)
 	{
-		/*  make new_node point to the head */
 		new_node->next = *stack;
-		/* NULL <- new_node -> head */
 
-		/* make the head prev point the new_node */
 		(*stack)->prev = new_node;
-		/* NULL <- new_node -> <- head */
 
 		*stack = new_node;
-		/* NULL <- head -> <- new_node -> */
 	}
 	else
 	{
@@ -54,7 +48,7 @@ void op_push(stack_t **stack, unsigned int line_number)
  * Return: nothing
  */
 
-void op_pall(stack_t **stack, unsigned int line_number)
+stack_t *op_pall(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
@@ -63,4 +57,5 @@ void op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
+	return (*stack);
 }
