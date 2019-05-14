@@ -10,7 +10,7 @@
 
 void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number)
 {
-	op_t ops[] = {
+	instruction_t ops[] = {
 		{"push", op_push},
 		{"pall", op_pall},
 		{"pint", op_pint},
@@ -23,7 +23,7 @@ void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number)
 
 	while (i != 7)
 	{
-		if (!(strcmp(ops[i].op, line)))
+		if (!(strcmp(ops[i].opcode, line)))
 		{
 			return (ops[i].f);
 		}
