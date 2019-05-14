@@ -20,13 +20,13 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf"USAGE: monty file\n");
+		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		printf(2, "Error: Can't open file \n");
+		printf("Error: Can't open file \n");
 		exit(EXIT_FAILURE);
 	}
 	lines = getline(&line_buff, &line_buff_size, fp);
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 		func = get_opcode(bigb[0]);
 		if (func == NULL)
 		{
-			printf(2, "L: unknown instruction %s\n", bigb[0]);
+			printf("L: unknown instruction\n");
 			exit(EXIT_FAILURE);
 		}
 		(func)(&head, counter);
