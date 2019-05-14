@@ -2,7 +2,7 @@
 
 /**
  * get_opcode - that selects the correct function to perform the
- * operation asked by the user
+ * operation asked by the user.
  * @s: the string passed as argument to the program
  *
  * Return: the function pointer to an operator
