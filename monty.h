@@ -32,7 +32,12 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/* global variable */
+extern int node_data;
 
-int (*get_opcode(char *s));
+char **parse_line(char *line);
 
+void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number);
+stack_t *op_push(stack_t **stack, unsigned int line_number);
+stack_t *op_pall(stack_t **stack, unsigned int line_number);
 #endif
