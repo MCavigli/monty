@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		fprintf(2, "Error: Can't open file %s\n", argv[1]);
+		fprintf(2, "Error: Can't open file \n");
 		exit(EXIT_FAILURE);
 	}
 	lines = getline(&line_buff, &line_buff_size, fp);
@@ -41,11 +41,11 @@ int main(int argc, char **argv)
 		counter++;
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
-			node_data = (int)bigb[1];
+			node_data = atoi(bigb[1]);
 		func = get_opcode(bigb[0]);
 		if (func == NULL)
 		{
-			fprintf(2, "L%d: unknown instruction %s\n", lines, bigb[0]);
+			fprintf(2, "L%zd: unknown instruction %s\n", lines, bigb[0]);
 			exit(EXIT_FAILURE);
 		}
 		(func)(&head, counter);
