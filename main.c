@@ -15,7 +15,7 @@ int main(char argc, char **argv)
 	size_t line_buff_size = 0, size = 0;
 	FILE *fp;
 	int counter = 0;
-	sszie_t lines;
+	ssize_t lines;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
