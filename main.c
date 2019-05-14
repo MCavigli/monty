@@ -7,12 +7,12 @@
 * Return: 0
 */
 
-int main(char argc, char **argv)
+int main(int argc, char **argv)
 {
 	stack_t *head = NULL;
 	char *line_buff = NULL;
 	char **bigb = NULL;
-	size_t line_buff_size = 0, size = 0;
+	size_t line_buff_size = 0;
 	FILE *fp;
 	int counter = 0;
 	ssize_t lines;
@@ -20,13 +20,13 @@ int main(char argc, char **argv)
 
 	if (argc != 2)
 	{
-		perror("USAGE: monty file\n");
+		fprintf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		perror("Error: Can't open file %s\n", argv[1]);
+		fprintf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	lines = getline(&line_buff, &line_buff_size, fp);
@@ -41,11 +41,11 @@ int main(char argc, char **argv)
 		counter++;
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
-			node_data = bigb[1];
+			node_data = (int)bigb[1];
 		func = get_opcode(bigb[0]);
 		if (func == NULL)
 		{
-			perror("L%d: unknown instruction %s\n", lines, bigb[0]);
+			fprintf("L%d: unknown instruction %s\n", lines, bigb[0]);
 			exit(EXIT_FAILURE);
 		}
 		(func)(&head, counter);
@@ -53,7 +53,7 @@ int main(char argc, char **argv)
 		lines = getline(&line_buff, &line_buff_size, fp);
 	}
 	free(bigb);
-	free(buff);
+	free(line_buff);
 	fclose(fp);
 	return (0);
 }
