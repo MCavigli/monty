@@ -16,6 +16,7 @@ int main(char argc, char **argv)
 	FILE *fp;
 	int counter = 0;
 	sszie_t lines;
+	void (*f)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
 	{
@@ -41,13 +42,13 @@ int main(char argc, char **argv)
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
 			node_data = bigb[1];
-/* send to get_opcode() */
-		if (get_opcode == NULL)
+		f = get_opcode(bigb[0]);
+		if (f == NULL)
 		{
 			perror("L%d: unknown instruction %s\n", lines, bigb[0]);
 			exit(EXIT_FAILURE);
 		}
-
+		head = (*f)(&head, counter);
 
 		lines = getline(&line_buff, &line_buff_size, fp);
 	}
