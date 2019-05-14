@@ -16,7 +16,7 @@ int main(char argc, char **argv)
 	FILE *fp;
 	int counter = 0;
 	ssize_t lines;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*func)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
 	{
@@ -37,23 +37,23 @@ int main(char argc, char **argv)
 	}
 	while (lines >= 0)
 	{
-		bigb = NULL, buff = NULL;
+		bigb = NULL, line_buff = NULL;
 		counter++;
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
 			node_data = bigb[1];
-		f = get_opcode(bigb[0]);
-		if (f == NULL)
+		func = get_opcode(bigb[0]);
+		if (func == NULL)
 		{
 			perror("L%d: unknown instruction %s\n", lines, bigb[0]);
 			exit(EXIT_FAILURE);
 		}
-		head = (*f)(&head, counter);
+		(func)(&head, counter);
 
 		lines = getline(&line_buff, &line_buff_size, fp);
 	}
 	free(bigb);
 	free(buff);
-	fclose(argv[1]);
+	fclose(fp);
 	return (0);
 }
