@@ -8,7 +8,7 @@
  * Return: the function pointer to an operator
  */
 
-void (*get_opcode(char *str, int line_number, stack_t **head))
+void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number)
 {
 	op_t ops[] = {
 		{"push", op_push},
@@ -23,7 +23,7 @@ void (*get_opcode(char *str, int line_number, stack_t **head))
 
 	while (i != 7)
 	{
-		if (!(strcmp(ops[i].op, s)))
+		if (!(strcmp(ops[i].op, line)))
 		{
 			return (ops[i].f);
 		}
