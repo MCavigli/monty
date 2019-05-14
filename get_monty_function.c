@@ -8,7 +8,7 @@
  * Return: the function pointer to an operator
  */
 
-int (*get_opcode(char *s))
+int (*get_opcode(char *str, int line_number))
 {
 	op_t ops[] = {
 		{"push", op_push},
