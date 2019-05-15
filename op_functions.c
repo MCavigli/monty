@@ -14,8 +14,10 @@ void op_push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 
 	if (!stack)
+	{
 		dprintf(2, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
+	}
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
