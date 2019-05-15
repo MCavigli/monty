@@ -127,7 +127,32 @@ void op_pop(stack_t **stack, unsigned int line_number)
 
 void op_add(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
-	return;
+	stack_t *temp = *stack;
+	int count = 0;
+        int sum = 0;
+        (void)line_number;
+
+	if (!stack && (*stack)->next)
+	{
+		dprintf(2, "L%u: can't add, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+        while (*stack && (*stack)->next)
+        {
+                if (count == 2)
+                {
+                        break;
+                }
+                sum += (*stack)->n;
+                *stack = (*stack)->next;
+
+                count++;
+        }
+	*stack = temp;
+
+        (*stack)->next->n = sum;
+        (*stack)->next->prev = NULL;
+	free(*stack);
+        *stack = (temp)->next;
 }
