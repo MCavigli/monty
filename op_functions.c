@@ -95,7 +95,12 @@ void op_pint(stack_t **stack, unsigned int line_number)
 void op_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
-	(void)line_number;
+
+	if (!stack)
+	{
+		dprintf(2, "L%u: can't pop an empty stack", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	while(*stack)
 	{
