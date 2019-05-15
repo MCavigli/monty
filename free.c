@@ -4,7 +4,7 @@ glo_t glo;
  * free_buff - frees buffers from main
  * Return: nothing
  */
-void free_buff()
+void free_buff(void)
 {
 	free(glo.bigb);
 	free(glo.line_buff);
