@@ -14,9 +14,9 @@ int main(int argc, char **argv)
 	char **bigb = NULL;
 	size_t line_buff_size = 0;
 	FILE *fp;
-	int counter = 0;
+	unsigned int counter = 0;
 	ssize_t lines;
-	void (*func)(stack_t **stack, unsigned int line_number);
+	int check;
 
 	if (argc != 2)
 	{
@@ -42,13 +42,13 @@ int main(int argc, char **argv)
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
 			node_data = atoi(bigb[1]);
-		func = get_opcode(bigb[0]);
-		if (func == NULL)
+		check = get_opcode(&head, counter, bigb[0]);
+		if (check == 0)
 		{
 			printf("L: unknown instruction\n");
 			exit(EXIT_FAILURE);
 		}
-		(func)(&head, counter);
+
 
 		lines = getline(&line_buff, &line_buff_size, fp);
 	}
