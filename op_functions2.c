@@ -4,8 +4,8 @@ void op_swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node1 = *stack;
 	stack_t *node2 = (*stack)->next;
-	stack_t *temp;
-	stack_t *node3;
+	stack_t *temp = NULL;
+	stack_t *node3 = NULL;
 
 	if (*stack && (*stack)->next)
 	{
