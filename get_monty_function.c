@@ -1,4 +1,5 @@
 #include "monty.h"
+glo_t glo;
 
 /**
  * get_opcode - that selects the correct function to perform the
@@ -8,7 +9,7 @@
  * Return: the function pointer to an operator
  */
 
-int get_opcode(stack_t **stack, unsigned int line_number, char *str)
+int get_opcode(stack_t **stack, unsigned int line_number)
 {
 	instruction_t ops[] = {
 		{"push", op_push},
@@ -16,12 +17,13 @@ int get_opcode(stack_t **stack, unsigned int line_number, char *str)
 		{"pint", op_pint},
 		{"pop", op_pop},
 		{"add", op_add},
+		{"swap", op_swap},
 		{NULL, NULL}};
 	int i = 0;
 
 	while (i != 5)
 	{
-		if (!(strcmp(ops[i].opcode, str)))
+		if (!(strcmp(ops[i].opcode, glo.bigb)))
 		{
 			ops[i].f(stack, line_number);
 			break;
