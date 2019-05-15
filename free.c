@@ -19,7 +19,7 @@ void free_buff()
 
 void free_stack(stack_t *head)
 {
-	stack *temp;
+	stack_t *temp;
 
 	while (head)
 	{
