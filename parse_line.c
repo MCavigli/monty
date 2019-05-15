@@ -15,9 +15,11 @@ char **parse_line()
 	if (!big_buff)
 	{
 		dprintf(2, "Error: malloc failed\n");
-		free_buff();
+		free(glo.line_buff);
+		fclose(glo.fp);
 		exit(EXIT_FAILURE);
 	}
+
 	while (glo.line_buff[i])
 		i++;
 
