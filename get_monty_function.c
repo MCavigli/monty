@@ -4,7 +4,8 @@ glo_t glo;
 /**
  * get_opcode - that selects the correct function to perform the
  * operation asked by the user.
- * @s: the string passed as argument to the program
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
  *
  * Return: the function pointer to an operator
  */
