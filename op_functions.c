@@ -109,7 +109,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	while(*stack)
+	while (*stack)
 	{
 		tmp = (*stack)->next;
 		free(*stack);
@@ -129,8 +129,8 @@ void op_add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 	int count = 0;
-        int sum = 0;
-        (void)line_number;
+	int sum = 0;
+	(void)line_number;
 
 	if (!stack && (*stack)->next)
 	{
@@ -138,21 +138,21 @@ void op_add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-        while (*stack && (*stack)->next)
-        {
-                if (count == 2)
-                {
-                        break;
-                }
-                sum += (*stack)->n;
-                *stack = (*stack)->next;
+	while (*stack && (*stack)->next)
+	{
+		if (count == 2)
+		{
+			break;
+		}
+		sum += (*stack)->n;
+		*stack = (*stack)->next;
 
-                count++;
-        }
+		count++;
+	}
 	*stack = temp;
 
-        (*stack)->next->n = sum;
-        (*stack)->next->prev = NULL;
+	(*stack)->next->n = sum;
+	(*stack)->next->prev = NULL;
 	free(*stack);
-        *stack = (temp)->next;
+	*stack = (temp)->next;
 }
