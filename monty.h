@@ -53,4 +53,8 @@ void op_pop(stack_t **stack, unsigned int line_number);
 void op_add(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 
+void argc_check(int argc);
+void open_check(char **argv);
+void line_check(ssize_t lines);
+void op_check(int check, unsigned int counter);
 #endif
