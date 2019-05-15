@@ -1,5 +1,5 @@
 #include "monty.h"
-glo_t glo;;
+glo_t glo;
 
 /**
  * op_push - function that push an element to the stack
