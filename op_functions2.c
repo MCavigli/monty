@@ -1,5 +1,13 @@
 #include "monty.h"
 
+/**
+ * op_swap - function that swaps the first 2 nodes in a linked list
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
 void op_swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node1 = *stack;
@@ -32,4 +40,18 @@ void op_swap(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * op_nop - function that does nothing when executed
+ * @stack: a pointer to the head of the linked list
+ * @line_number: the line number
+ * Return: nothing
+ */
+
+void op_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	return;
 }
