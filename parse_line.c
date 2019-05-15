@@ -12,13 +12,13 @@ char **parse_line()
 	char *token;
 	int i = 0;
 
-	while (glo.line[i])
+	while (glo.line_buff[i])
 		i++;
 
-	if (glo.line[i - 1] == '\n')
-		glo.line[i - 1] = '\0';
+	if (glo.line_buff[i - 1] == '\n')
+		glo.line_buff[i - 1] = '\0';
 
-	token = strtok(glo.line, " \t");
+	token = strtok(glo.line_buff, " \t");
 	i = 0;
 	while (token)
 	{
