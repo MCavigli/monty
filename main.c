@@ -40,8 +40,12 @@ int main(int argc, char **argv)
 		bigb = NULL, line_buff = NULL;
 		counter++;
 		bigb = parse_line(line_buff);
+		printf("BIGB[0]: %s\n", bigb[0]);
 		if (bigb[1] != NULL)
+		{
 			node_data = atoi(bigb[1]);
+			printf("BIGB[1]: %s\n", bigb[1]);
+		}
 		check = get_opcode(&head, counter, bigb[0]);
 		if (check == 0)
 		{
