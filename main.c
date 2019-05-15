@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	int check;
 	size_t line_buff_size = 0;
 	unsigned int counter = 0;
+
 	glo.line_buff = NULL;
 	glo.bigb = NULL;
 
