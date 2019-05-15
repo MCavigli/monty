@@ -12,15 +12,15 @@ int node_data;
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
-	(void)line_number;
 
 	if (!stack)
-		exit(1);
+		dprintf(2, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	new_node->n = node_data;
 	new_node->next = NULL;
@@ -71,9 +71,15 @@ void op_pall(stack_t **stack, unsigned int line_number)
 
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
-
-	printf("%d\n", (*stack)->n);
+	if (*stack)
+	{
+		printf("%d\n", (*stack)->n);
+	}
+	else
+	{
+		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
