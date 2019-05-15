@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 */
 	while (lines >= 0)
 	{
-		glo.bigb = NULL;
+		bigb = NULL;
 		counter++;
 		glo.bigb = parse_line();
 		if (glo.bigb[1] != NULL)
