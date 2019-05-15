@@ -27,7 +27,9 @@ void op_swap(stack_t **stack, unsigned int line_number)
 
 	else
 	{
-		dprintf(2, "L%u: can't swap, stack too short", line_number);
+		dprintf(2, "L%u: can't swap, stack too short\n", line_number);
+		free_buff();
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
