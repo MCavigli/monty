@@ -40,4 +40,8 @@ char **parse_line(char *line);
 int get_opcode(stack_t **stack, unsigned int line_number, char *str);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+
 #endif
