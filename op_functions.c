@@ -1,5 +1,5 @@
 #include "monty.h"
-int node_data;
+glo_t glo;;
 
 /**
  * op_push - function that push an element to the stack
@@ -24,7 +24,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{
 		exit(EXIT_FAILURE);
 	}
-	new_node->n = node_data;
+	new_node->n = glo.node_data;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 
