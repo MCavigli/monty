@@ -16,12 +16,17 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (!stack)
 	{
 		dprintf(2, "L%u: usage: push integer\n", line_number);
+		free_buff();
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
+		dprintf(2, "Error: malloc failed\n");
+		free_buff();
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = glo.node_data;
@@ -99,6 +104,8 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (!stack)
 	{
 		dprintf(2, "L%u: can't pop an empty stack", line_number);
+		free_buff();
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -112,8 +119,10 @@ void op_pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- *
- *
+ * op_add - adds the first two nodes together
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ * Return: nothing
  */
 
 void op_add(stack_t **stack, unsigned int line_number)
