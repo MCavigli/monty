@@ -1,4 +1,5 @@
 #include "monty.h"
+int node_data;
 
 /**
  * op_push - function that push an element to the stack
@@ -8,18 +9,18 @@
  * Return: nothing
  */
 
-stack_t *op_push(stack_t **stack, unsigned int line_number)
+void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
 	(void)line_number;
 
 	if (!stack)
-		return (NULL);
+		exit(1);
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		return (NULL);
+		exit(1);
 	}
 	new_node->n = node_data;
 	new_node->next = NULL;
@@ -37,7 +38,6 @@ stack_t *op_push(stack_t **stack, unsigned int line_number)
 	{
 		*stack = new_node;
 	}
-	return (new_node);
 }
 
 /**
@@ -48,7 +48,7 @@ stack_t *op_push(stack_t **stack, unsigned int line_number)
  * Return: nothing
  */
 
-stack_t *op_pall(stack_t **stack, unsigned int line_number)
+void op_pall(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
 
@@ -57,5 +57,4 @@ stack_t *op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
-	return (*stack);
 }
