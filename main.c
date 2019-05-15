@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	}
 	while (lines >= 0)
 	{
-		bigb = NULL, line_buff = NULL;
+		bigb = NULL;
 		counter++;
 		bigb = parse_line(line_buff);
 		if (bigb[1] != NULL)
