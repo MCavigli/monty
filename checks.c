@@ -53,12 +53,14 @@ void line_check(ssize_t lines)
  * @line_buff: buffer that needs to be freed if failure
  * Return: nothing
  */
-void op_check(int check, unsigned int counter)
+void op_check(int check, unsigned int c)
 {
 	if (check == 0)
 	{
-		dprintf(2, "L%u: unknown instruction %s\n", counter, glo.bigb[0]);
+		dprintf(2, "L%u: unknown instruction %s\n", c, glo.bigb[0]);
 		free(glo.bigb);
 		free(glo.line_buff);
+		fclose(glo.fp);
+		exit(EXIT_FAILURE);
 	}
 }
