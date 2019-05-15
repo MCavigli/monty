@@ -59,4 +59,5 @@ void line_check(ssize_t lines);
 void op_check(int check, unsigned int counter);
 
 void free_buff();
+void free_stack(stack_t *head);
 #endif
