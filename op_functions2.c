@@ -26,7 +26,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 		node2->prev = temp;
 		node2->next = node1;
 
-		if(node3 != NULL)
+		if (node3 != NULL)
 		{
 			node3->prev = node1;
 		}
