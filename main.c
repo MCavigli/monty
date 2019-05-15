@@ -10,12 +10,13 @@ glo_t glo;
 int main(int argc, char **argv)
 {
 	stack_t *head = NULL;
-	glo.line_buff = NULL;
-	glo.bigb = NULL;
-	size_t line_buff_size = 0;
-	unsigned int counter = 0;
 	ssize_t lines;
 	int check;
+	size_t line_buff_size = 0;
+	unsigned int counter = 0;
+	glo.line_buff = NULL;
+	glo.bigb = NULL;
+
 /*
 	stack_t *head = NULL;
 	char *line_buff = NULL;
@@ -68,7 +69,7 @@ int main(int argc, char **argv)
   op_check(check, counter, bigb, line_buff);
 */
 
-			dprintf(2, "L%u: unknown instruction %s\n", counter, bigb[0]);
+			dprintf(2, "L%u: unknown instruction %s\n", counter, glo.bigb[0]);
 			free(glo.bigb);
 			free(glo.line_buff);
 			fclose(glo.fp);
