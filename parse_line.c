@@ -12,6 +12,12 @@ char **parse_line()
 	char *token;
 	int i = 0;
 
+	if (!big_buff)
+	{
+		dprintf(2, "Error: malloc failed\n");
+		free_buff();
+		exit(EXIT_FAILURE);
+	}
 	while (glo.line_buff[i])
 		i++;
 
