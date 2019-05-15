@@ -1,7 +1,8 @@
 #include "monty.h"
 glo_t glo;
+
 /**
- * argc_check: Check to see if argc == 2
+ * argc_check - Check to see if argc == 2
  * @argc: argument counter
  * Return: nothing
  */
@@ -15,8 +16,7 @@ void argc_check(int argc)
 }
 
 /**
- * open_check: Check to see if .m file was opened successfully
- * @fp: file that is to be opened
+ * open_check - Check to see if .m file was opened successfully
  * @argv: argument vector
  * Return: nothing
  */
@@ -32,7 +32,6 @@ void open_check(char **argv)
 /**
  * line_check - Check to see if the file was read correctly
  * @lines: the number of lines in the file. Failure if == -1
- * @line_buff: the buffer that needs to be freed if failure
  * Return: nothing
  */
 void line_check(ssize_t lines)
@@ -48,9 +47,7 @@ void line_check(ssize_t lines)
 /**
  * op_check - Check to see if the correct op code was found
  * @check: Integer that tells us if the op code was found or not
- * @counter: line number
- * @bigb: array of strings that needs to be freed if failure
- * @line_buff: buffer that needs to be freed if failure
+ * @c: line number
  * Return: nothing
  */
 void op_check(int check, unsigned int c)
