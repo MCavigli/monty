@@ -35,7 +35,6 @@ int main(int argc, char **argv)
 		check = get_opcode(&head, counter);
 
 		op_check(check, counter);
-
 		lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
 	}
 	free(glo.bigb);
