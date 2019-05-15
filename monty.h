@@ -34,7 +34,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /* global variable */
-typdef struct glo_s
+typedef struct glo_s
 {
 	FILE *fp;
 	char *line_buff;
