@@ -38,6 +38,6 @@ extern int node_data;
 char **parse_line(char *line);
 
 int get_opcode(stack_t **stack, unsigned int line_number, char *str);
-stack_t *op_push(stack_t **stack, unsigned int line_number);
-stack_t *op_pall(stack_t **stack, unsigned int line_number);
+void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **stack, unsigned int line_number);
 #endif
