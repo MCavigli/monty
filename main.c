@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	int check;
 	size_t line_buff_size = 0;
 	unsigned int counter = 0;
+
 	glo.line_buff = NULL;
 	glo.bigb = NULL;
 
@@ -35,7 +36,6 @@ int main(int argc, char **argv)
 		check = get_opcode(&head, counter);
 
 		op_check(check, counter);
-
 		lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
 	}
 	free(glo.bigb);
