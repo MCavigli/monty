@@ -13,10 +13,13 @@ int get_opcode(stack_t **stack, unsigned int line_number, char *str)
 	instruction_t ops[] = {
 		{"push", op_push},
 		{"pall", op_pall},
+		{"pint", op_pint},
+		{"pop", op_pop},
+		{"add", op_add},
 		{NULL, NULL}};
 	int i = 0;
 
-	while (i != 2)
+	while (i != 5)
 	{
 		if (!(strcmp(ops[i].opcode, str)))
 		{
