@@ -1,5 +1,5 @@
 #include "monty.h"
-
+glo_t glo;
 /**
 * main - reads a monty file and executes line by line
 * @argc: argument counter
@@ -7,53 +7,80 @@
 * Return: 0
 */
 
-int main(char argc, char **argv)
+int main(int argc, char **argv)
 {
+	stack_t *head = NULL;
+	glo.line_buff = NULL;
+	glo.bigb = NULL;
+	size_t line_buff_size = 0;
+	unsigned int counter = 0;
+	ssize_t lines;
+	int check;
+/*
 	stack_t *head = NULL;
 	char *line_buff = NULL;
 	char **bigb = NULL;
-	size_t line_buff_size = 0, size = 0;
+	size_t line_buff_size = 0;
 	FILE *fp;
-	int counter = 0;
-	sszie_t lines;
-	void (*f)(stack_t **stack, unsigned int line_number);
-
+	unsigned int counter = 0;
+	ssize_t lines;
+	int check;
+*/
+	argc_check(argc);
+/*
 	if (argc != 2)
 	{
-		perror("USAGE: monty file\n");
+		dprintf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fp = fopen(argv[1], "r");
+*/
+
+	glo.fp = fopen(argv[1], "r");
+	open_check(argv);
+/*
 	if (fp == NULL)
 	{
-		perror("Error: Can't open file %s\n", argv[1]);
+		printf("Error: Can't open file \n");
 		exit(EXIT_FAILURE);
 	}
-	lines = getline(&line_buff, &line_buff_size, fp);
+*/
+	lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
+	line_check(lines);
+/*
 	if (lines == -1)
 	{
 		free(line_buff);
 		exit(0);
 	}
+*/
 	while (lines >= 0)
 	{
-		bigb = NULL, buff = NULL;
+		glo.bigb = NULL;
 		counter++;
-		bigb = parse_line(line_buff);
-		if (bigb[1] != NULL)
-			node_data = bigb[1];
-		f = get_opcode(bigb[0]);
-		if (f == NULL)
+		glo.bigb = parse_line();
+		if (glo.bigb[1] != NULL)
+			glo.node_data = atoi(glo.bigb[1]);
+		check = get_opcode(&head, counter);
+
+		if (check == 0)
 		{
-			perror("L%d: unknown instruction %s\n", lines, bigb[0]);
+/*
+  op_check(check, counter, bigb, line_buff);
+*/
+
+			dprintf(2, "L%u: unknown instruction %s\n", counter, bigb[0]);
+			free(glo.bigb);
+			free(glo.line_buff);
+			fclose(glo.fp);
 			exit(EXIT_FAILURE);
 		}
-		head = (*f)(&head, counter);
 
-		lines = getline(&line_buff, &line_buff_size, fp);
+
+
+		lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
 	}
-	free(bigb);
-	free(buff);
-	fclose(argv[1]);
+	free(glo.bigb);
+	free(glo.line_buff);
+	fclose(glo.fp);
 	return (0);
 }
