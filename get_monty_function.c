@@ -8,7 +8,7 @@
  * Return: the function pointer to an operator
  */
 
-void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number)
+int get_opcode(stack_t **stack, unsigned int line_number, char *str)
 {
 	instruction_t ops[] = {
 		{"push", op_push},
@@ -16,13 +16,14 @@ void (*get_opcode(char *line))(stack_t **stack, unsigned int line_number)
 		{NULL, NULL}};
 	int i = 0;
 
-	while (i != 7)
+	while (i != 2)
 	{
-		if (!(strcmp(ops[i].opcode, line)))
+		if (!(strcmp(ops[i].opcode, str)))
 		{
-			return (ops[i].f);
+			ops[i].f(stack, line_number);
+			break;
 		}
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
