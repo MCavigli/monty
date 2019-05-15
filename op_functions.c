@@ -50,6 +50,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 void op_pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *tmp = *stack;
 	(void)line_number;
 
 	while (*stack)
@@ -57,4 +58,54 @@ void op_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
+	*stack = tmp;
+}
+
+/**
+ * op_pint - function that prints the value at the top of the stack
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
+void op_pint(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * op_pop - function that removes the top element of the stack
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
+void op_pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+	(void)line_number;
+
+	while(*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+		break;
+	}
+}
+
+/**
+ *
+ *
+ */
+
+void op_add(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	return;
 }
