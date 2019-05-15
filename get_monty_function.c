@@ -25,5 +25,5 @@ int get_opcode(stack_t **stack, unsigned int line_number, char *str)
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
