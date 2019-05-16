@@ -21,10 +21,11 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		{"swap", op_swap},
 		{"nop", op_nop},
 		{"sub", op_sub},
+		{"div", op_div},
 		{NULL, NULL}};
 	int i = 0;
 
-	while (i != 8)
+	while (i != 9)
 	{
 		if (!(strcmp(ops[i].opcode, glo.bigb)))
 		{
@@ -33,7 +34,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	if (i == 8)
+	if (i == 9)
 		return (0);
 	return (1);
 }
