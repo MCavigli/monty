@@ -104,7 +104,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (!*stack)
 	{
 		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
-		free_buff();
+		/* free_buff(); */
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
