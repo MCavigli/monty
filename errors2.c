@@ -40,6 +40,6 @@ void mul_error(unsigned int c)
  */
 void mod_error(unsigned int c)
 {
-	dprintf(STDERR_FILENO, "L%u: can't mod, stack too short", c);
+	dprintf(STDERR_FILENO, "L%u: can't mod, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }
