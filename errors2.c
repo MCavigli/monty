@@ -32,3 +32,14 @@ void mul_error(unsigned int c)
 	dprintf(STDERR_FILENO, "L%u: can't mul, stack too short\n", c);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * mod_error - Error functionality for op_div()
+ * @c: line count
+ * Return: nothing
+ */
+void mod_error(unsigned int c)
+{
+	dprintf(STDERR_FILENO, "L%u: can't mod, stack too short", c);
+	exit(EXIT_FAILURE);
+}
