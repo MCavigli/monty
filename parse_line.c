@@ -3,6 +3,7 @@ glo_t glo;
 /**
  * parse_line - tokenizes the line
  * @c: line number
+ * @head: the head pointer to the list
  * Return: a token that holds the correct command
  */
 char *parse_line(unsigned int c, stack_t *head)
@@ -46,6 +47,7 @@ char *parse_line(unsigned int c, stack_t *head)
 /**
  * integer_error - function that prints an integer error and exits
  * @c: line count
+ * @head: the head pointer to the linked list
  * Return: nothing
  */
 void integer_error(unsigned int c, stack_t *head)
