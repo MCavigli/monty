@@ -81,3 +81,28 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
+void op_rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+	stack_t *nthNode = current;
+	(void)line_number;
+
+	while (current->next)
+	{
+		current = current->next;
+	}
+	current->next = *stack;
+	(*stack)->prev = current;
+	*stack = nthNode->next;
+	(*stack)->prev = NULL;
+	nthNode->next = NULL;
+}
