@@ -8,18 +8,25 @@ glo_t glo;
 char *parse_line(int c)
 {
 	char *token = NULL;
+/*
 	char *next_token = NULL;
+*/
 	int i = 0;
+	(void)c;
+
 
 	while (glo.line_buff[i])
 		i++;
-	i = 0;
+
 	if (glo.line_buff[i - 1] == '\n')
 		glo.line_buff[i - 1] = '\0';
 
 	token = strtok(glo.line_buff, " \t");
 	if (strcmp(token, "push") == 0)
-	{
+		glo.node_data = atoi(strtok(NULL, " \t"));
+	return (token);
+
+/*
 		next_token = strtok(NULL, " \t");
 		while (next_token[i])
 		{
@@ -28,7 +35,6 @@ char *parse_line(int c)
 				i++;
 				continue;
 			}
-			
 			if (isdigit(next_token[i]))
 			{
 				i++;
@@ -42,9 +48,8 @@ char *parse_line(int c)
 
 
 		}
-		glo.node_data = atoi(next_token);
-	}
-	return (token);
+*/
+
 /*
 	char **big_buff = malloc(10 * (sizeof(char *)));
 	char *token;
