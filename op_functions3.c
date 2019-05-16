@@ -27,9 +27,9 @@ void op_mod(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * op_code - prints the char at the top of the stack
+ * op_pchar - prints the char at the top of the stack
  * @stack: a pointer to the head of a linked list
- * @line_number: the line number
+ * @li: the line number
  *
  * Return: nothing
  */
