@@ -21,7 +21,7 @@ void op_swap(stack_t **stack, unsigned int l)
 		exit(EXIT_FAILURE);
 	}
 
-	if (current || current->next)
+	if (current && current->next)
 	{
 		second_node = current->next;
 		temp = current->n;
