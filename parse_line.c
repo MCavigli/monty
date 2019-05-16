@@ -17,7 +17,7 @@ char *parse_line(unsigned int c, stack_t *head)
 		glo.line_buff[i - 1] = '\0';
 	i = 0;
 	token = strtok(glo.line_buff, " \t");
-	if (token == NULL)
+	if (token == NULL || token[i] == '#')
 		return (NULL);
 	if (strcmp(token, "push") == 0)
 	{
