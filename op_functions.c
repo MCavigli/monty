@@ -56,15 +56,14 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 void op_pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack;
+	stack_t *current = *stack;
 	(void)line_number;
 
-	while (*stack)
+	while (current)
 	{
-		printf("%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%d\n", current->n);
+		current = current->next;
 	}
-	*stack = tmp;
 }
 
 /**
@@ -77,9 +76,11 @@ void op_pall(stack_t **stack, unsigned int line_number)
 
 void op_pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack)
+	stack_t *current = *stack;
+
+	if (current)
 	{
-		printf("%d\n", (*stack)->n);
+		printf("%d\n", current->n);
 	}
 	else
 	{
@@ -97,17 +98,19 @@ void op_pint(stack_t **stack, unsigned int line_number)
 
 void op_pop(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current = *stack;
 	stack_t *tmp;
 
-	if (!*stack)
+	if (!current)
 		pop_error(stack, line_number);
 
-	while (*stack)
+	tmp = current->next;
+	free(current);
+	*stack = tmp;
+	current = *stack;
+	if (current)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-		break;
+		current->prev = NULL;
 	}
 }
 
@@ -120,29 +123,13 @@ void op_pop(stack_t **stack, unsigned int line_number)
 
 void op_add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
-	int count = 0;
-	int sum = 0;
-	(void)line_number;
+	stack_t *current = *stack;
+	stack_t *second_node;
 
-	if ((!*stack) || (!(*stack)->next) || (!stack && !(*stack)->next))
+	if (!current || !current->next)
 		add_error(line_number);
 
-	while (*stack && (*stack)->next)
-	{
-		if (count == 2)
-		{
-			break;
-		}
-		sum += (*stack)->n;
-		*stack = (*stack)->next;
-
-		count++;
-	}
-	*stack = temp;
-
-	(*stack)->next->n = sum;
-	(*stack)->next->prev = NULL;
-	free(*stack);
-	*stack = (temp)->next;
+	second_node = current->next;
+	second_node->n = second_node->n + current->n;
+	op_pop(stack, line_number);
 }
