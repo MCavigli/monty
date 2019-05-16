@@ -101,10 +101,10 @@ void op_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	if (!stack)
+	if (!*stack)
 	{
-		dprintf(2, "L%u: can't pop an empty stack", line_number);
-		free_buff();
+		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
+		/* free_buff(); */
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -132,9 +132,9 @@ void op_add(stack_t **stack, unsigned int line_number)
 	int sum = 0;
 	(void)line_number;
 
-	if (!stack && (*stack)->next)
+	if ((!*stack) || (!(*stack)->next) || (!stack && !(*stack)->next))
 	{
-		dprintf(2, "L%u: can't add, stack too short", line_number);
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

@@ -25,7 +25,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 
 	while (i != 7)
 	{
-		if (!(strcmp(ops[i].opcode, glo.bigb[0])))
+		if (!(strcmp(ops[i].opcode, glo.bigb)))
 		{
 			ops[i].f(stack, line_number);
 			break;

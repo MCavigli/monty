@@ -54,7 +54,7 @@ void op_check(int check, unsigned int c)
 {
 	if (check == 0)
 	{
-		dprintf(2, "L%u: unknown instruction %s\n", c, glo.bigb[0]);
+		dprintf(2, "L%u: unknown instruction %s\n", c, glo.bigb);
 		free(glo.bigb);
 		free(glo.line_buff);
 		fclose(glo.fp);

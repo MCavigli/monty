@@ -30,16 +30,20 @@ int main(int argc, char **argv)
 	{
 		glo.bigb = NULL;
 		counter++;
-		glo.bigb = parse_line();
+		glo.bigb = parse_line(counter);
+/*
 		if (glo.bigb[1] != NULL)
 			glo.node_data = atoi(glo.bigb[1]);
+*/
 		check = get_opcode(&head, counter);
 
 		op_check(check, counter);
 		lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
 	}
 	free(glo.bigb);
+/*
 	free(glo.line_buff);
+*/
 	fclose(glo.fp);
 	free(head);
 	return (0);
