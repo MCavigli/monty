@@ -48,6 +48,7 @@ void line_check(ssize_t lines)
  * op_check - Check to see if the correct op code was found
  * @check: Integer that tells us if the op code was found or not
  * @c: line number
+ * @head: pointer to the head of the linked list
  * Return: nothing
  */
 void op_check(int check, unsigned int c, stack_t *head)
