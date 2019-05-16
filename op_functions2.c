@@ -25,7 +25,7 @@ void op_swap(stack_t **stack, unsigned int l)
 	else
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", l);
-		free_stack(*stack);
+		/*free_stack(*stack);*/
 		exit(EXIT_FAILURE);
 	}
 }
