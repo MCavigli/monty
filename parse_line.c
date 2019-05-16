@@ -79,7 +79,6 @@ void pint_error(unsigned int c)
 void pop_error(stack_t **stack, unsigned int c)
 {
 	dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", c);
-	/* free_buff(); */
 	free_stack(*stack);
 	exit(EXIT_FAILURE);
 }
