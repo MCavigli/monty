@@ -30,18 +30,17 @@ int main(int argc, char **argv)
 	{
 		glo.bigb = NULL;
 		counter++;
-		glo.bigb = parse_line(counter);
+		glo.bigb = parse_line(counter, head);
 		if (glo.bigb == NULL)
 		{
 			lines = getline(&glo.line_buff, &buff_size, glo.fp);
 			continue;
 		}
 		check = get_opcode(&head, counter);
-		op_check(check, counter);
+		op_check(check, counter, head);
 		lines = getline(&glo.line_buff, &buff_size, glo.fp);
 	}
-	free(glo.bigb);
-	fclose(glo.fp);
-	free(head);
+	free_buff();
+	free_stack(head);
 	return (0);
 }
