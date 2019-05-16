@@ -7,7 +7,6 @@ glo_t glo;
 void free_buff(void)
 {
 	free(glo.bigb);
-	free(glo.line_buff);
 	fclose(glo.fp);
 }
 
