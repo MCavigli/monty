@@ -75,7 +75,7 @@ void op_sub(stack_t **stack, unsigned int line_number)
  * op_div - divides the first two nodes together
  * @stack: a pointer to the head of a linked list
  * @line_number: the line number
- * @Return: nothing
+ * Return: nothing
  */
 
 void op_div(stack_t **stack, unsigned int line_number)
