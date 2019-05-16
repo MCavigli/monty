@@ -53,11 +53,15 @@ typedef struct glo_s
 } glo_t;
 extern glo_t glo;
 
+/* Parse line and error functions */
 char *parse_line(unsigned int c, stack_t *head);
 void integer_error(unsigned int c, stack_t *head);
 void pint_error(unsigned int c);
 void pop_error(stack_t **stack, unsigned int c);
 void add_error(unsigned int c);
+
+/* More error functions */
+void sub_error(unsigned int c);
 
 /* Checks and executes given commands */
 int get_opcode(stack_t **stack, unsigned int line_number);
@@ -68,6 +72,7 @@ void op_pop(stack_t **stack, unsigned int line_number);
 void op_add(stack_t **stack, unsigned int line_number);
 void op_swap(stack_t **stack, unsigned int line_number);
 void op_nop(stack_t **stack, unsigned int line_number);
+void op_sub(stack_t **stack, unsigned int line_number);
 
 /* Conditional statements to check for failure */
 void argc_check(int argc);
