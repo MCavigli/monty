@@ -69,6 +69,7 @@ void pint_error(unsigned int c)
 /**
  * pop_error - prints a pop error and exits
  * @c: line number
+ * @stack: the linked list
  * Return: nothing
  */
 void pop_error(stack_t **stack, unsigned int c)
