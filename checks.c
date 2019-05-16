@@ -10,7 +10,7 @@ void argc_check(int argc)
 {
 	if (argc != 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -24,7 +24,7 @@ void open_check(char **argv)
 {
 	if (glo.fp == NULL)
 	{
-		dprintf(2, "Error: Can't open file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -54,10 +54,19 @@ void op_check(int check, unsigned int c)
 {
 	if (check == 0)
 	{
-		dprintf(2, "L%u: unknown instruction %s\n", c, glo.bigb);
+		op_check_print_error(c);
 		free(glo.bigb);
-		free(glo.line_buff);
 		fclose(glo.fp);
 		exit(EXIT_FAILURE);
 	}
+}
+
+/**
+ * op_check_print_error - prints the error for function op_check()
+ * @c: line number
+ * Return: nothing
+ */
+void op_check_print_error(unsigned int c)
+{
+	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", c, glo.bigb);
 }
