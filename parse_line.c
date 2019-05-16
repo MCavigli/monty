@@ -5,7 +5,7 @@ glo_t glo;
  * @c: line number
  * Return: a token that holds the correct command
  */
-char *parse_line(unsigned int c)
+char *parse_line(unsigned int c, stack_t *head)
 {
 	char *token = NULL, *next_token = NULL;
 	int i = 0;
@@ -22,7 +22,7 @@ char *parse_line(unsigned int c)
 	{
 		next_token = strtok(NULL, " \t");
 		if (next_token == NULL)
-			integer_error(c);
+			integer_error(c, head);
 		while (next_token[i])
 		{
 			if (i == 0 && next_token[i] == '-')
@@ -36,7 +36,7 @@ char *parse_line(unsigned int c)
 				continue;
 			}
 			else
-				integer_error(c);
+				integer_error(c, head);
 		}
 		glo.node_data = atoi(next_token);
 	}
@@ -48,11 +48,13 @@ char *parse_line(unsigned int c)
  * @c: line count
  * Return: nothing
  */
-void integer_error(unsigned int c)
+void integer_error(unsigned int c, stack_t *head)
 {
 	dprintf(STDERR_FILENO, "L%u: usage: push integer\n", c);
+	free_buff();
+	free(glo.line_buff);
+	free_stack(head);
 	exit(EXIT_FAILURE);
-
 }
 
 /**
