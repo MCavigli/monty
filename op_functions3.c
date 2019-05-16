@@ -25,3 +25,30 @@ void op_mod(stack_t **stack, unsigned int line_number)
 	second_node->n = second_node->n % current->n;
 	op_pop(stack, line_number);
 }
+
+/**
+ * op_code - prints the char at the top of the stack
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
+void op_pchar(stack_t **stack, unsigned int li)
+{
+	stack_t *current = *stack;
+
+	if (!(*stack))
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", li);
+		exit(EXIT_FAILURE);
+	}
+
+	if (current->n < 0 || current->n > 127)
+	{
+		dprintf(STDERR_FILENO, "L%u: ", li);
+		dprintf(STDERR_FILENO, "can't pchar, value out of range\n");
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", current->n);
+}
