@@ -12,7 +12,13 @@ glo_t glo;
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
-	(void)line_number;
+
+	if (!stack)
+	{
+		free_buff();
+		free_stack(*stack);
+		integer_error(line_number);
+	}
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
