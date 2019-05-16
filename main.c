@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	stack_t *head = NULL;
 	ssize_t lines;
 	int check;
-	size_t line_buff_size = 0;
+	size_t buff_size = 0;
 	unsigned int counter = 0;
 
 	glo.line_buff = NULL;
@@ -23,25 +23,24 @@ int main(int argc, char **argv)
 	glo.fp = fopen(argv[1], "r");
 	open_check(argv);
 
-	lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
+	lines = getline(&glo.line_buff, &buff_size, glo.fp);
 	line_check(lines);
 
 	while (lines >= 0)
 	{
 		glo.bigb = NULL;
 		counter++;
-		glo.bigb = parse_line(counter);
+		glo.bigb = parse_line(counter, head);
 		if (glo.bigb == NULL)
 		{
-			lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
+			lines = getline(&glo.line_buff, &buff_size, glo.fp);
 			continue;
 		}
 		check = get_opcode(&head, counter);
-		op_check(check, counter);
-		lines = getline(&glo.line_buff, &line_buff_size, glo.fp);
+		op_check(check, counter, head);
+		lines = getline(&glo.line_buff, &buff_size, glo.fp);
 	}
-	free(glo.bigb);
-	fclose(glo.fp);
-	free(head);
+	free_buff();
+	free_stack(head);
 	return (0);
 }

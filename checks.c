@@ -50,13 +50,13 @@ void line_check(ssize_t lines)
  * @c: line number
  * Return: nothing
  */
-void op_check(int check, unsigned int c)
+void op_check(int check, unsigned int c, stack_t *head)
 {
 	if (check == 0)
 	{
 		op_check_print_error(c);
-		free(glo.bigb);
-		fclose(glo.fp);
+		free_buff();
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 }
