@@ -7,16 +7,17 @@ glo_t glo;
  */
 char *parse_line(int c)
 {
-	char *token = NULL;
-	char *next_token = NULL;
+	char *token = NULL, *next_token = NULL;
 	int i = 0;
 
 	while (glo.line_buff[i])
 		i++;
-	if (glo.line_buff[i - 1] == '\n')
+	if (i > 0 && glo.line_buff[i - 1] == '\n')
 		glo.line_buff[i - 1] = '\0';
 	i = 0;
 	token = strtok(glo.line_buff, " \t");
+	if (token == NULL)
+		return (NULL);
 	if (strcmp(token, "push") == 0)
 	{
 		next_token = strtok(NULL, " \t");
