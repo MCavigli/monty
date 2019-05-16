@@ -52,3 +52,32 @@ void op_pchar(stack_t **stack, unsigned int li)
 	}
 	printf("%c\n", current->n);
 }
+
+/**
+ * op_pstr - function that prints the string starting at the top of the stack
+ * @stack: a pointer to the head of a linked list
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+
+void op_pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+	(void)line_number;
+
+	while (current)
+	{
+		if (current->n == 0)
+		{
+			break;
+		}
+		if (current->n < 0 || current->n > 127)
+		{
+			break;
+		}
+		printf("%c", current->n);
+		current = current->next;
+	}
+	printf("\n");
+}
