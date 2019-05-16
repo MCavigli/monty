@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -52,7 +53,11 @@ typedef struct glo_s
 } glo_t;
 extern glo_t glo;
 
-char *parse_line(int c);
+char *parse_line(unsigned int c);
+void integer_error(unsigned int c);
+void pint_error(unsigned int c);
+void pop_error(stack_t **stack, unsigned int c);
+void add_error(unsigned int c);
 
 /* Checks and executes given commands */
 int get_opcode(stack_t **stack, unsigned int line_number);
@@ -68,7 +73,8 @@ void op_nop(stack_t **stack, unsigned int line_number);
 void argc_check(int argc);
 void open_check(char **argv);
 void line_check(ssize_t lines);
-void op_check(int check, unsigned int counter);
+void op_check(int check, unsigned int c);
+void op_check_print_error(unsigned int c);
 
 /* Freeing functions */
 void free_buff(void);

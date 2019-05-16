@@ -12,19 +12,12 @@ glo_t glo;
 void op_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_node;
-
-	if (!stack)
-	{
-		dprintf(2, "L%u: usage: push integer\n", line_number);
-		free_buff();
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+	(void)line_number;
 
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		free_buff();
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
@@ -84,8 +77,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		pint_error(line_number);
 	}
 }
 
@@ -102,12 +94,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	if (!*stack)
-	{
-		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
-		/* free_buff(); */
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+		pop_error(stack, line_number);
 
 	while (*stack)
 	{
@@ -133,10 +120,7 @@ void op_add(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if ((!*stack) || (!(*stack)->next) || (!stack && !(*stack)->next))
-	{
-		dprintf(2, "L%u: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		add_error(line_number);
 
 	while (*stack && (*stack)->next)
 	{

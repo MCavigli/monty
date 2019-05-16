@@ -32,5 +32,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
+	if (i == 7)
+		return (0);
 	return (1);
 }
