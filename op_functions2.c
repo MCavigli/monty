@@ -14,6 +14,13 @@ void op_swap(stack_t **stack, unsigned int l)
 	stack_t *second_node;
 	int temp;
 
+	if (!(*stack))
+	{
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", l);
+		free_buff();
+		exit(EXIT_FAILURE);
+	}
+
 	if (current || current->next)
 	{
 		second_node = current->next;
@@ -25,7 +32,8 @@ void op_swap(stack_t **stack, unsigned int l)
 	else
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", l);
-		/*free_stack(*stack);*/
+		free_buff();
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
