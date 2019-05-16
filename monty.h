@@ -46,12 +46,12 @@ typedef struct glo_s
 {
 	FILE *fp;
 	char *line_buff;
-	char **bigb;
+	char *bigb;
 	int node_data;
 } glo_t;
 extern glo_t glo;
 
-char **parse_line();
+char *parse_line(int c);
 
 /* Checks and executes given commands */
 int get_opcode(stack_t **stack, unsigned int line_number);
