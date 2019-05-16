@@ -26,10 +26,11 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		{"mod", op_mod,},
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
+		{"rotl", op_rotl},
 		{NULL, NULL}};
 	int i = 0;
 
-	while (i != 13)
+	while (i != 14)
 	{
 		if (!(strcmp(ops[i].opcode, glo.bigb)))
 		{
@@ -38,7 +39,7 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	if (i == 13)
+	if (i == 14)
 		return (0);
 	return (1);
 }
