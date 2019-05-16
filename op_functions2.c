@@ -15,12 +15,6 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	stack_t *temp = NULL;
 	stack_t *node3 = NULL;
 
-	if ((!*stack) || (!(*stack)->next))
-	{
-		dprintf(2, "L%u: can't add, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
 	if (*stack && (*stack)->next)
 	{
 		node3 = node2->next;
