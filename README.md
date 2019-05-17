@@ -59,13 +59,12 @@ Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$
 ### Output
 Here are some examples of the output for th opcodes used.
 
-**The push opcode**
-The opcode `push` pushes an element to the stack.
+**The push opcode** - The opcode `push` pushes an element to the stack.
 * Usage: `push <int>`.
   * where `<int>` is an integer.
 
 **The pall opcode**
-The opcode `pall` prints all the values on the stack, starting from the top of the stack.
+- The opcode `pall` prints all the values on the stack, starting from the top of the stack.
 * Usage `pall`.
 * Format: see example.
 * If the stack is empty, don’t print anything.
@@ -83,8 +82,7 @@ Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$ ./monty bytecodes/00.m
 Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$
 ```
 
-**The add opcode**
-The opcode `add` adds the top two elements of the stack.
+**The add opcode** - The opcode `add` adds the top two elements of the stack.
 * Usage: `add`
 * The result is stored in the second top element of the stack, and the top element is removed, so that at the end:
   * The top element of the stack contains the result.
@@ -113,3 +111,7 @@ All files were created and compiled on `Ubuntu 14.04.4 LTS` using `GCC 4.8.4`
 ### Authors
 - **Jun Zhu** - [VieetBubbles](https://github.com/VieetBubbles)
 - **Marc Cavigli** - [MCavigli](https://github.com/MCavigli)
+
+### Acknowledgments
+- **Tu Vu** - [tuvo1106](https://github.com/tuvo1106)
+- **Jason Cortella** - [jasoncortella](https://github.com/jasoncortella)
