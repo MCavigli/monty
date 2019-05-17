@@ -93,9 +93,10 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 void op_rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	stack_t *nthNode = current;
+	stack_t *nthNode;
 	(void)line_number;
 
+	nthNode = current;
 	while (current->next)
 	{
 		current = current->next;
