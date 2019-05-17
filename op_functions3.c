@@ -123,12 +123,15 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	int temp;
 	(void)line_number;
 
-	while (last_node->next)
+	if (*stack && (*stack)->next)
 	{
-		last_node = last_node->next;
-	}
+		while (last_node->next)
+		{
+			last_node = last_node->next;
+		}
 
-	temp = current->n;
-	current->n = last_node->n;
-	last_node->n = temp;
+		temp = current->n;
+		current->n = last_node->n;
+		last_node->n = temp;
+	}
 }
