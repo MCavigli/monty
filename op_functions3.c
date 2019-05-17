@@ -83,7 +83,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotl - rotates the stack to the top
+ * op_rotl - rotates the stack to the top
  * @stack: a pointer to the head of a linked list
  * @line_number: the line number
  *
