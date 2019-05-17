@@ -121,19 +121,19 @@ void op_rotl(stack_t **stack, unsigned int line_number)
 void op_rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	stack_t *last_node = *stack;
-	int temp;
 	(void)line_number;
 
 	if (*stack && (*stack)->next)
 	{
-		while (last_node->next)
+		while (current->next->next)
 		{
-			last_node = last_node->next;
+			current = current->next;
 		}
 
-		temp = current->n;
-		current->n = last_node->n;
-		last_node->n = temp;
+		(*stack)->prev = current->next;
+		(current->next)->prev = NULL;
+		(current->next)->next = *stack;
+		current->next = NULL;
+		*stack = (*stack)->prev;
 	}
 }
