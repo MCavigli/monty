@@ -11,17 +11,12 @@ char *parse_line(unsigned int c, stack_t *head)
 	char *token = NULL, *next_token = NULL;
 	int i = 0;
 
-	while (glo.line_buff[i])
-		i++;
-	if (i > 0 && glo.line_buff[i - 1] == '\n')
-		glo.line_buff[i - 1] = '\0';
-	i = 0;
-	token = strtok(glo.line_buff, " \t");
-	if (token == NULL || token[i] == '#')
+	token = strtok(glo.line_buff, " \n");
+	if (token == NULL)
 		return (NULL);
 	if (strcmp(token, "push") == 0)
 	{
-		next_token = strtok(NULL, " \t");
+		next_token = strtok(NULL, " \n");
 		if (next_token == NULL)
 			integer_error(c, head);
 		while (next_token[i])
