@@ -31,6 +31,11 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 		{NULL, NULL}};
 	int i = 0;
 
+	if (glo.bigb[0] == '#')
+	{
+		ops[6].f(stack, line_number);
+		return (1);
+	}
 	while (i != 15)
 	{
 		if (!(strcmp(ops[i].opcode, glo.bigb)))
@@ -42,5 +47,6 @@ int get_opcode(stack_t **stack, unsigned int line_number)
 	}
 	if (i == 15)
 		return (0);
+
 	return (1);
 }
