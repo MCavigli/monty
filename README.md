@@ -1,6 +1,6 @@
 # monty
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
-### Compilation & Output
+### Compilation
 * Your code will be compiled this way:
 ```
 $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
@@ -56,6 +56,56 @@ Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$
   * it finds an error in the file.
   * an error occured.
 * If you can’t malloc anymore, print the error message `Error: malloc failed`, followed by a new line, and exit with status `EXIT_FAILURE`.
+### Output
+Here are some examples of the output for th opcodes used.
+
+**The push opcode**
+The opcode `push` pushes an element to the stack.
+* Usage: `push <int>`.
+  * where `<int>` is an integer.
+
+**The pall opcode**
+The opcode `pall` prints all the values on the stack, starting from the top of the stack.
+* Usage `pall`.
+* Format: see example.
+* If the stack is empty, don’t print anything.
+
+```
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$ cat -e bytecodes/00.m
+push 1$
+push 2$
+push 3$
+pall$
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$ ./monty bytecodes/00.m
+3
+2
+1
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$
+```
+
+**The add opcode**
+The opcode `add` adds the top two elements of the stack.
+* Usage: `add`
+* The result is stored in the second top element of the stack, and the top element is removed, so that at the end:
+  * The top element of the stack contains the result.
+  * The stack is one element shorter.
+```
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$ cat bytecodes/12.m
+push 1
+push 2
+push 3
+pall
+add
+pall
+
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$ ./monty bytecodes/12.m
+3
+2
+1
+5
+1
+Timmy@ubuntu:~/0x18-stacks_queues_lifo_fifo$
+```
 
 ### About
 All files were created and compiled on `Ubuntu 14.04.4 LTS` using `GCC 4.8.4`
